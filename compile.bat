@@ -24,7 +24,7 @@ if not exist src\ncustomcontent (
 cd src
 
 rd /S /Q ncustomcontent\sound
-copy "..\README.md" "README.md"
+copy "..\README.md" "ncustomcontent\README.md"
 %_7zip% a -t7z ..\build\ncustomcontent.7z ncustomcontent
 del README.md
 cd ..
