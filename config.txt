@@ -1,9 +1,0 @@
-;!@Install@!UTF-8!
-Title="Nate's Custom TF2 Content"
-BeginPrompt="Do you want to install Nate's Custom TF2 Content?"
-InstallPath="C:\\Program Files (x86)\\Steam\\steamapps\\common\\Team Fortress 2\\tf\\custom"
-GUIFlags="64"
-FinishMessage="This isn't all of my custom content. Here's a link to my ToonHUD (modified MrPaladin's ToonHUD):\nhttps://nfitzen.keybase.pub/tf2-content/toonhud\nToonHUD should be opening right now."
-ExecuteFile="https://toonhud.com/user/nfitzen/theme/2VVRLTZF"
-ExecuteFile="https://nfitzen.keybase.pub/tf2-content/usage/"
-;!@InstallEnd@!
