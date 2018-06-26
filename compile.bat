@@ -1,7 +1,7 @@
 @echo off
 
 mkdir buildsupport
-del /Q build
+rd /S /Q build
 mkdir build
 
 where /q 7z
@@ -21,9 +21,13 @@ if not exist src\ncustomcontent (
     exit
 )
 
+cd src
+
 rd /S /Q src\ncustomcontent\sound
 
-%_7zip% a -t7z build\ncustomcontent.7z src\ncustomcontent
+%_7zip% a -t7z ..\build\ncustomcontent.7z ncustomcontent
 
-if not exist config.txt powershell -Command "Invoke-WebRequest https://github.com/nfitzen/tf2-content/buildsupport/config.txt -OutFile buildsupport\config.txt"
+cd ..
+
+if not exist buildsupport\config.txt powershell -Command "Invoke-WebRequest https://github.com/nfitzen/tf2-content/buildsupport/config.txt -OutFile buildsupport\config.txt"
 copy /b buildsupport\7zSD.sfx + buildsupport\config.txt + build\ncustomcontent.7z build\CustomContentInstaller.exe
