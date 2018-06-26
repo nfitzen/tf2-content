@@ -1,7 +1,7 @@
 # nfitzen's Custom Scripts
 
 These are some [custom scripts](//github.com/nfitzen/tf2-content/releases/latest) made by @nfitzen, while borrowing some concepts from GameBanana.
-[Website](//nathaniel.fitzenrider.com/tf2-content/)
+[Website](//nathaniel.fitzenrider.com/tf2-content)
 
 [Usage](#usage)
 

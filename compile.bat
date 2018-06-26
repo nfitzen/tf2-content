@@ -26,7 +26,7 @@ cd src
 rd /S /Q ncustomcontent\sound
 copy "..\README.md" "ncustomcontent\README.md"
 %_7zip% a -t7z ..\build\ncustomcontent.7z ncustomcontent
-del README.md
+del ncustomcontent\README.md
 cd ..
 
 if not exist buildsupport\config.txt powershell -Command "Invoke-WebRequest https://github.com/nfitzen/tf2-content/buildsupport/config.txt -OutFile buildsupport\config.txt"
