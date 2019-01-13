@@ -27,8 +27,8 @@ If you want to \(hopefully\) decrease your client-server latency \(less facestab
  - \<teleport\> \- [Eureka Effect](https://wiki.teamfortress.com/wiki/Eureka_Effect) teleport. Can be toggled
  using \<toggleScript\> _default: B_
 
-Click [here](file:///C:/Program%20Files%20(x86)/Steam/steamapps/common/Team%20Fortress%202/tf/custom/ncustomcontent/cfg/default_keybinds.cfg)
-and edit the keybinds to your liking. \(default_keybinds.cfg in tf/custom/ncustomcontent\)
+**Click [here](file:///C:/Program%20Files%20(x86)/Steam/steamapps/common/Team%20Fortress%202/tf/custom/ncustomcontent/cfg/default_keybinds.cfg)
+and edit the keybinds to your liking. \(default_keybinds.cfg in tf/custom/ncustomcontent\)**
 
 If you want to change the keybinds go [here](https://wiki.teamfortress.com/wiki/Scripting#List_of_key_names)
 
