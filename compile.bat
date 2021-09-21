@@ -1,3 +1,6 @@
+:: SPDX-FileCopyrightText: MIT
+:: Copyright (C) 2018-2019 Nathaniel Fitzenrider <https://github.com/nfitzen>
+
 mkdir buildsupport
 rd /S /Q build
 mkdir build
