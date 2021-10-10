@@ -1,4 +1,4 @@
-:: SPDX-FileCopyrightText: MIT
+:: SPDX-License-Identifier: MIT
 :: Copyright (C) 2018-2019 Nathaniel Fitzenrider <https://github.com/nfitzen>
 
 mkdir buildsupport
@@ -26,6 +26,9 @@ move 7zr.exe src\7zr.exe
 cd src
 rd /S /Q ncustomcontent\sound
 copy "..\README.md" "ncustomcontent\README.md"
+copy ..\LICENSE ncustomcontent\LICENSE
+mkdir LICENSES
+robocopy ..\LICENSES\ ncustomcontent\LICENSES\
 %_7zip% a -t7z ..\build\ncustomcontent ncustomcontent
 move 7zr.exe ..\7zr.exe
 cd ..
