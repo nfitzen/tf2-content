@@ -2,9 +2,10 @@
 # SPDX-FileCopyrightText: 2018, 2021 Nathaniel Fitzenrider <https://github.com/nfitzen>
 
 build/
-buildsupport/7zSD.sfx.here
-buildsupport/7zSD.sfx
+dist/
+buildsupport/7zex.7z
 7zr.exe
+7za.exe
 src/ncustomcontent/README.md
 src/ncustomcontent/sound/
 

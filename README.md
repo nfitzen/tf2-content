@@ -13,25 +13,30 @@ by me, while borrowing some concepts from GameBanana.
 
 ## Build info
 
-Requires a [custom 7zSFX module](https://github.com/OlegScherbakov/7zSFX)
-(for making SFX).
-
 You need [7-Zip](https://www.7-zip.org/).
 (The compiler script downloads a cmd-only version automatically if not in path.)
 
 That's it!
 
-
 ## Usage
+
+### Enhancements
 
 If you want to (hopefully) decrease your client-server latency
 (less facestabs yay), you may run
 `exec apply_enhancements` in console.
 *Use ONLY with good internet!*
 
-Edit keybinds in `tf/custom/ncustomcontent/default_keybinds.cfg`.
+You can undo this change by running `exec undo_enhancements`.
+
+### Disable blood
+
+You can disable blood by running `exec disable_blood`
+and re-enable blood by running `exec enable_blood`.
 
 ### Keybinds used
+
+The following is a table of the keybinds used. It's currently
 
 |        Key         |             Description              |  Default Keybind  |
 | :----------------- | :----------------------------------- | ----------------: |
@@ -40,6 +45,10 @@ Edit keybinds in `tf/custom/ncustomcontent/default_keybinds.cfg`.
 | `<attack2>`        | button for secondary attack          | <kbd>MOUSE2</kbd> |
 | `<sentry replace>` | button for rebuilding a Sentry       | <kbd>MOUSE2</kbd> |
 | `<teleport>`       | Eureka Effect teleport               |   <kbd>B</kbd>    |
+| `<dscroll>`        | disguise scroll                      | <kbd>MWHEELDOWN</kbd> |
+
+Add keybind overrides in `cfg/keybinds.cfg`.
+Default keybinds are in `cfg/default_keybinds.cfg`.
 
 ### All Classes
 
@@ -54,21 +63,33 @@ Edit keybinds in `tf/custom/ncustomcontent/default_keybinds.cfg`.
 
 2. Hold `<attack>` and `<toggleScript>` to keep sapping. Let go of `<attack>` to stop and then let go of `<toggleScript>`
 
+#### Scrolling while disguised
+
+It's common knowledge among TF2 players that people scrolling through
+weapons can't be a Spy... right? Well, look no further.
+
+This might not work yet, but:
+
+1. Press `<dscroll>` to scroll through weapons (in descending order)
+   and immediately change your disguise's weapon.
+2. Alias `+dscroll` makes `<toggleScript>` toggle it, while alias `dscroll` is not toggled. `<dscroll>` means `+dscroll`, at the moment.
+    - I plan to use this idiomatic structure more often for certain keypresses.
+      Though on second thought, prefixing with `toggle_` might be better.
+
 ### Engineer
 
 #### Replace Sentry:
 
 1. Hold `<toggleScript>` and `<sentry replace>` to destroy your current sentry and rebuild another
-    * If you wish to change `<sentry replace>` from <kbd>MOUSE2</kbd>, you may use the individual ones in default_keybinds.cfg
-    * If you want the cmds here they are:
-        * `bind KEY sentryDestroyAndBuild` (non-togglable (`<toggleScript>` isn't used to toggle it.))
-        * `bind KEY +sentryReBuild` (togglable)
+    - If you wish to change `<sentry replace>` from <kbd>MOUSE2</kbd>, you may use the individual ones in default_keybinds.cfg
+    - If you want the cmds here they are:
+        - `bind KEY sentryDestroyAndBuild` (non-togglable (`<toggleScript>` isn't used to toggle it.))
+        - `bind KEY +sentryReBuild` (togglable)
 
 #### Eureka Effect Script:
 
 1. Press `<teleport>` to teleport to spawn
-
-   * Hold `<toggleScript>` key and press `<teleport>` to teleport to your tele exit
+    - Hold `<toggleScript>` key and press `<teleport>` to teleport to your tele exit
 
 ### Soldier
 

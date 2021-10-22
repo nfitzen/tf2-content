@@ -1,38 +1,43 @@
 :: SPDX-License-Identifier: MIT
-:: Copyright (C) 2018-2019 Nathaniel Fitzenrider <https://github.com/nfitzen>
+:: Copyright (C) 2018-2019, 2021 Nathaniel Fitzenrider <https://github.com/nfitzen>
+
+@echo off
 
 mkdir buildsupport
 rd /S /Q build
 mkdir build
+mkdir build\ncustomcontent
 
-where /q 7z
-if errorlevel 1 (
-    if not exist 7zr.exe powershell -Command "Invoke-WebRequest https://www.7-zip.org/a/7zr.exe -OutFile 7zr.exe"
-    set _7zip=7zr
-) else set _7zip=7z
+call :download_7zip
 
-if not exist buildsupport\7zSD.sfx (
-    powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/OlegScherbakov/7zSFX/master/files/7zsd_extra_162_3888.7z -OutFile buildsupport\7zSFX.7z"
-    %_7zip% e buildsupport\7zSFX.7z 7zsd_All.sfx
-    move 7zsd_All.sfx buildsupport\7zSD.sfx
-    del buildsupport\7zSFX.7z
-)
 if not exist src\ncustomcontent (
     echo "What're you doing without my scripts? Download them."
-    exit
+    pause
+    exit 1
 )
 
-move 7zr.exe src\7zr.exe
-cd src
-rd /S /Q ncustomcontent\sound
-copy "..\README.md" "ncustomcontent\README.md"
-copy ..\LICENSE ncustomcontent\LICENSE
-mkdir LICENSES
-robocopy ..\LICENSES\ ncustomcontent\LICENSES\
-%_7zip% a -t7z ..\build\ncustomcontent ncustomcontent
-move 7zr.exe ..\7zr.exe
-cd ..
-del src\ncustomcontent\README.md
+robocopy .\src\ncustomcontent .\build\ncustomcontent /E
 
-if not exist buildsupport\config.txt powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/nfitzen/tf2-content/master/buildsupport/config.txt -OutFile buildsupport\config.txt"
-copy /b buildsupport\7zSD.sfx + buildsupport\config.txt + build\ncustomcontent.7z build\CustomContentInstaller.exe
+rd /S /Q src\ncustomcontent\sound
+copy README.md .\build\ncustomcontent\README.md
+copy LICENSE .\build\ncustomcontent\LICENSE
+robocopy LICENSES\ .\build\ncustomcontent\LICENSES\ /S
+del .\dist\ncustomcontent.zip
+%_7zip% a .\dist\ncustomcontent.zip .\build\ncustomcontent
+
+pause
+
+exit /B 0
+
+:download_7zip
+where /q 7z
+if errorlevel 1 (
+    if not exist buildsupport\7za.exe (
+        powershell -Command "Invoke-WebRequest https://www.7-zip.org/a/7zr.exe -OutFile buildsupport\7zr.exe"
+        powershell -Command "Invoke-WebRequest https://www.7-zip.org/a/7z1900-extra.7z -OutFile buildsupport\7zex.7z"
+        .\buildsupport\7zr.exe e buildsupport\7zex.7z 7za.exe -obuildsupport\
+        del .\buildsupport\7zr.exe buildsupport\7zex.7z
+    )
+    set _7zip=.\buildsupport\7za.exe
+) else set _7zip=7z
+exit /B 0
